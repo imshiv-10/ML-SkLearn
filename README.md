@@ -1,5 +1,5 @@
 ## ML-SkLearn
 
-> Machine Learning through SKLearn
+> Machine through SKLearn
 
 Introduction to supervised machine learning, decision trees, and gradient boosting using Python.
