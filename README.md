@@ -2,6 +2,9 @@
 
 > Machine Learning through SKLearn
 
+![ml-engineering](https://user-images.githubusercontent.com/112423329/219110844-a5b0652a-add0-4276-abf8-dcd1b8097b28.jpg)
+
+
 Introduction to supervised machine learning, decision trees, and gradient boosting using Python.
 
 Linear regression is a statistical method used to model the relationship between a dependent variable and one or more independent variables by fitting a linear equation to the observed data. The goal is to minimize the difference between the predicted and actual values.
