@@ -65,25 +65,25 @@ tree_2 = DecisionTreeClassifier().fit(X[sample_2], y[sample_2])
 Use the random forest to make predictions
 predictions = (tree_1.predict(X_test) + tree_2.predict(X_test) + ...) / 10
 
-# Dataset with 1000 observations
-#  ________
-# |_1_|_2_|_3_|_4_|_5_|...|_1000_|
+ Dataset with 1000 observations
+  ________
+ |_1_|_2_|_3_|_4_|_5_|...|_1000_|
 
-# Bootstrap Sample 1
-#  ______
-# |_2_|_2_|_4_|_4_|_4_|...|_1_|
+ Bootstrap Sample 1
+ ______
+|_2_|_2_|_4_|_4_|_4_|...|_1_|
 
-# Bootstrap Sample 2
-#  ______
-# |_3_|_1_|_1_|_3_|_2_|...|_3_|
+ Bootstrap Sample 2
+  ______
+ |_3_|_1_|_1_|_3_|_2_|...|_3_|
 
-# Bootstrap Sample 3
-#  ______
-# |_4_|_4_|_2_|_2_|_1_|...|_1_|
+ Bootstrap Sample 3
+  ______
+ |_4_|_4_|_2_|_2_|_1_|...|_1_|
 
-# Bootstrap Sample 4
-#  ______
-# |_1_|_3_|_3_|_1_|_3_|...|_2_|
+ Bootstrap Sample 4
+  ______
+ |_1_|_3_|_3_|_1_|_3_|...|_2_|
 `
 
 # ensembling
@@ -91,102 +91,102 @@ predictions = (tree_1.predict(X_test) + tree_2.predict(X_test) + ...) / 10
 Suppose we have a dataset with 1000 observations and we want to build a random forest with 4 decision trees. We'll use the bootstrap technique to create 4 different subsets of the data, each with the same size as the original dataset (1000 observations), but with some random sampling with replacement.
 
 `
-# Dataset with 1000 observations
-#  ________
-# |_1_|_2_|_3_|_4_|_5_|...|_1000_|
+ Dataset with 1000 observations
+  ________
+ |_1_|_2_|_3_|_4_|_5_|...|_1000_|
 
-# Bootstrap Sample 1
-#  ______
-# |_2_|_2_|_4_|_4_|_4_|...|_1_|
+ Bootstrap Sample 1
+  ______
+ |_2_|_2_|_4_|_4_|_4_|...|_1_|
 
-# Bootstrap Sample 2
-#  ______
-# |_3_|_1_|_1_|_3_|_2_|...|_3_|
+ Bootstrap Sample 2
+  ______
+ |_3_|_1_|_1_|_3_|_2_|...|_3_|
 
-# Bootstrap Sample 3
-#  ______
-# |_4_|_4_|_2_|_2_|_1_|...|_1_|
+ Bootstrap Sample 3
+  ______
+ |_4_|_4_|_2_|_2_|_1_|...|_1_|
 
-# Bootstrap Sample 4
-#  ______
-# |_1_|_3_|_3_|_1_|_3_|...|_2_|
+ Bootstrap Sample 4
+  ______
+ |_1_|_3_|_3_|_1_|_3_|...|_2_|
 
 `
 
 Each bootstrap sample has the same size as the original dataset (1000 observations), but with some random sampling with replacement. Each bootstrap sample is used to train a separate decision tree in the random forest.
+`
+ Decision Tree 1 (trained on Bootstrap Sample 1)
+ ________
+ |_x_|_x_|_x_|_x_|_x_|...|_x_|
 
-# Decision Tree 1 (trained on Bootstrap Sample 1)
-`#  ________
-# |_x_|_x_|_x_|_x_|_x_|...|_x_|
+ Decision Tree 2 (trained on Bootstrap Sample 2)
+  ________
+ |_x_|_x_|_x_|_x_|_x_|...|_x_|
 
-# Decision Tree 2 (trained on Bootstrap Sample 2)
-#  ________
-# |_x_|_x_|_x_|_x_|_x_|...|_x_|
+ Decision Tree 3 (trained on Bootstrap Sample 3)
+  ________
+ |_x_|_x_|_x_|_x_|_x_|...|_x_|
 
-# Decision Tree 3 (trained on Bootstrap Sample 3)
-#  ________
-# |_x_|_x_|_x_|_x_|_x_|...|_x_|
-
-# Decision Tree 4 (trained on Bootstrap Sample 4)
-#  ________
-# |_x_|_x_|_x_|_x_|_x_|...|_x_|`
-
+ Decision Tree 4 (trained on Bootstrap Sample 4)
+  ________
+ |_x_|_x_|_x_|_x_|_x_|...|_x_|
+`
 
 Each decision tree in the random forest makes a prediction for each observation in the original dataset. The final prediction is made by averaging the predictions made by each decision tree.
 
-`# Final Prediction (Average of Predictions Made by Each Decision Tree)
-#  ________
-# |_x_|_x_|_x_|_x_|_x_|...|_x_|
+` Final Prediction (Average of Predictions Made by Each Decision Tree)
+  ________
+ |_x_|_x_|_x_|_x_|_x_|...|_x_|
 `
 
 # Hyper parameter tuning in random forest
 
-`# Random Forest 1
-# Hyperparameters:
-#  - Number of Trees: 100
-#  - Maximum Depth of Trees: 5
-#  - Minimum Samples per Leaf: 10
-#  - Number of Features to Consider at Each Split: sqrt(total number of features)
-#
-# Decision Tree 1 (trained on Bootstrap Sample 1)
-#  ________
-# |_x1_|_x2_|_x3_|_x4_|_x5_|...|_x10_|
-#
-# Decision Tree 2 (trained on Bootstrap Sample 2)
-#  ________
-# |_x1_|_x2_|_x3_|_x4_|_x6_|...|_x10_|
-#
-# Decision Tree 3 (trained on Bootstrap Sample 3)
-#  ________
-# |_x1_|_x2_|_x5_|_x6_|_x7_|...|_x10_|
-#
-# Decision Tree 4 (trained on Bootstrap Sample 4)
-#  ________
-# |_x1_|_x3_|_x4_|_x5_|_x7_|...|_x10_|
-#
+` Random Forest 1
+ Hyperparameters:
+  - Number of Trees: 100
+  - Maximum Depth of Trees: 5
+  - Minimum Samples per Leaf: 10
+  - Number of Features to Consider at Each Split: sqrt(total number of features)
+
+ Decision Tree 1 (trained on Bootstrap Sample 1)
+  ________
+ |_x1_|_x2_|_x3_|_x4_|_x5_|...|_x10_|
+
+ Decision Tree 2 (trained on Bootstrap Sample 2)
+  ________
+ |_x1_|_x2_|_x3_|_x4_|_x6_|...|_x10_|
+
+ Decision Tree 3 (trained on Bootstrap Sample 3)
+  ________
+ |_x1_|_x2_|_x5_|_x6_|_x7_|...|_x10_|
+
+ Decision Tree 4 (trained on Bootstrap Sample 4)
+  ________
+ |_x1_|_x3_|_x4_|_x5_|_x7_|...|_x10_|`
+
 
 # Random Forest 2
-# Hyperparameters:
-#  - Number of Trees: 200
-#  - Maximum Depth of Trees: 10
-#  - Minimum Samples per Leaf: 5
-#  - Number of Features to Consider at Each Split: log2(total number of features)
-#
-# Decision Tree 1 (trained on Bootstrap Sample 1)
-#  ________
-# |_x1_|_x2_|_x3_|_x4_|_x5_|...|_x10_|
-#
-# Decision Tree 2 (trained on Bootstrap Sample 2)
-#  ________
-# |_x1_|_x2_|_x3_|_x4_|_x6_|...|_x10_|
-#
-# Decision Tree 3 (trained on Bootstrap Sample 3)
-#  ________
-# |_x1_|_x2_|_x5_|_x6_|_x7_|...|_x10_|
-#
-# Decision Tree 4 (trained on Bootstrap Sample 4)
-#  ________
-# |_x1_|_x3_|_x4_|_x5_|_x7_|...|_x10_|
+ Hyperparameters:
+  - Number of Trees: 200
+  - Maximum Depth of Trees: 10
+  - Minimum Samples per Leaf: 5
+  - Number of Features to Consider at Each Split: log2(total number of features)
+
+ Decision Tree 1 (trained on Bootstrap Sample 1)
+  ________
+ |_x1_|_x2_|_x3_|_x4_|_x5_|...|_x10_|
+
+ Decision Tree 2 (trained on Bootstrap Sample 2)
+  ________
+ |_x1_|_x2_|_x3_|_x4_|_x6_|...|_x10_|
+
+ Decision Tree 3 (trained on Bootstrap Sample 3)
+  ________
+ |_x1_|_x2_|_x5_|_x6_|_x7_|...|_x10_|
+
+ Decision Tree 4 (trained on Bootstrap Sample 4)
+  ________
+ |_x1_|_x3_|_x4_|_x5_|_x7_|...|_x10_|
 `
 In this example, we see two random forests each with different hyperparameters. The number of trees, maximum depth of each tree, minimum samples per leaf, and number of features to consider at each split are all hyperparameters that can be tuned to optimize the performance of the random forest on a specific dataset. The visual example shows that, while both random forests have the same basic structure, they differ in the specific hyperparameters used.
 
